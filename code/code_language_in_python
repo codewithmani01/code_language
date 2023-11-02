@@ -1,0 +1,46 @@
+import random
+
+while True:
+    options = ("""
+    1) Code
+    2) Decode
+    3) Exit
+    """)
+    print(options)
+    usr = int(input("choose any of these: "))
+    if usr == 1:
+        st = input("enter your message:")
+        words = st.split(" ")
+        coding = True
+        if (coding):
+            nwords = []
+            for word in words:
+                if(len(word)>= 3):
+                    r1 = ''.join(random.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz") for _ in range(3))
+                    r2 = ''.join(random.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz") for _ in range(3))
+                    stnew = r1 + word[1:] + word[0] + r2
+                    nwords.append(stnew)
+                else:
+                    nwords.append(word[::-1])
+            print("Code: ", " ".join(nwords))
+            print("Your code is encoded successfully.")
+    elif usr == 2:  
+        str = input("enter your coded message:")
+        words = str.split(" ")
+        coding = True           
+        if(coding):
+            cwords = []
+            for word in words:
+                if(len(word)>= 3):
+                    stnew = word[3:-3]
+                    stnew = stnew[-1] + stnew[:-1]
+                    cwords.append(stnew)
+                else:
+                    cwords.append(word[::-1])
+            print("Message: ", " ".join(cwords))
+            print("Your code is decoded successfully.")
+    elif usr == 3:
+        print("Thanks for using me.")
+        break
+    else:
+        print("Enter an valid option...")
